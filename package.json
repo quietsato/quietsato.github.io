@@ -16,6 +16,7 @@
     "deploy": "gatsby build && gh-pages -d public -b gh-pages",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
+    "formatcheck": "prettier --check .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic"
