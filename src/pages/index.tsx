@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import "modern-css-reset/dist/reset.min.css";
+
 const Main = styled.main`
   background-color: #f1f1f1;
 `;
