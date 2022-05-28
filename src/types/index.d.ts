@@ -7,3 +7,19 @@ export type SocialLinkItem = {
   site: SocialLinkSite;
   username: string;
 };
+
+////////////////////////////////////////////////////////////////////////////////
+// Timeline
+////////////////////////////////////////////////////////////////////////////////
+export type LinkItem = {
+  text: string;
+  url: string;
+};
+
+export type TimelineItem = {
+  year: number;
+  month: number;
+  title: string;
+  description?: string;
+  links?: LinkItem[];
+};
