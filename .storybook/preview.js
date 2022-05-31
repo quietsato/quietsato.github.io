@@ -1,5 +1,5 @@
 import "modern-css-reset";
-import GlobalStyle from "../src/Styles";
+import GlobalStyle from "../src/styles";
 
 export const decorators = [
   (Story) => (

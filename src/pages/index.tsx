@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import "modern-css-reset/dist/reset.min.css";
-import GlobalStyles from "../Styles";
+import GlobalStyles from "../styles";
 
 const Main = styled.main``;
 
