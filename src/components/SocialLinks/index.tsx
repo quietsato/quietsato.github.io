@@ -31,13 +31,7 @@ const ListItem = styled.li`
   padding: 0;
 `;
 
-const A = styled.a`
-  :link,
-  :visited {
-    color: var(--theme-fg);
-    text-decoration: none;
-  }
-`;
+const Link = styled.a``;
 
 const Wrapper = styled.div`
   justify-content: center;
@@ -122,7 +116,7 @@ const Links: React.FC<Props> = (props) => {
     <List>
       {props.links.map((link, i) => (
         <ListItem key={i}>
-          <A href={generateLinkUrl(link)} target="_blank" rel="noreferrer noopener">
+          <Link href={generateLinkUrl(link)} target="_blank" rel="noreferrer noopener">
             <Card>
               <Wrapper>
                 <LinkIconArea>
@@ -132,7 +126,7 @@ const Links: React.FC<Props> = (props) => {
                 <LinkUserNameArea>{link.username}</LinkUserNameArea>
               </Wrapper>
             </Card>
-          </A>
+          </Link>
         </ListItem>
       ))}
     </List>
