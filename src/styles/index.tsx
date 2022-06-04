@@ -18,6 +18,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:link,
+:visited {
+  color: var(--theme-fg);
+  text-decoration: none;
+  @media (hover: hover) {
+    :hover {
+      color: var(--theme-blue);
+    }
+  }
+  @media (hover: none) {
+    :active {
+      color: var(--theme-blue);
+    }
+  }
+}
+
 @media screen and (prefers-color-scheme: dark) {
   body {
     --theme-black: #282c34;
