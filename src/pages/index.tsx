@@ -68,7 +68,7 @@ const IndexPage: React.FC = () => {
       <GlobalStyles />
       <Main>
         <Content>
-          <title>Home Page</title>
+          <title>I'm quietsato</title>
           <Hero>
             <H1>
               I'm <GradationText>quietsato</GradationText>!
