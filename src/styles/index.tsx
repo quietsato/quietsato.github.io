@@ -24,12 +24,18 @@ body {
   text-decoration: none;
   @media (hover: hover) {
     :hover {
-      color: var(--theme-blue);
+      * {
+        color: var(--theme-blue);
+        border-color: var(--theme-blue);
+      }
     }
   }
   @media (hover: none) {
     :active {
-      color: var(--theme-blue);
+      * {
+        color: var(--theme-blue);
+        border-color: var(--theme-blue);
+      }
     }
   }
 }
