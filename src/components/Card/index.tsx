@@ -18,7 +18,7 @@ const Root = styled.div`
   flex-direction: column;
   gap: 0.25em;
 
-  border: 1px solid var(--theme-fg);
+  border: 1px solid var(--theme-bg);
 `;
 
 ////////////////////////////////////////////////////////////////////////////////
