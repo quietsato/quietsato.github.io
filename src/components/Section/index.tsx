@@ -7,6 +7,7 @@ export type Props = {
 };
 
 const Root = styled.section`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +18,9 @@ const Title = styled.h2`
   text-align: center;
   display: inline-block;
 `;
+const ContentWrapper = styled.div`
+  width: 100%;
+`;
 
 const Section: React.FC<Props> = (props) => {
   return (
@@ -26,7 +30,7 @@ const Section: React.FC<Props> = (props) => {
           <GradationText>{props.title}</GradationText>
         </Title>
       )}
-      {props.children}
+      <ContentWrapper>{props.children}</ContentWrapper>
     </Root>
   );
 };
