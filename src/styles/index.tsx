@@ -49,7 +49,7 @@ body {
     --theme-blue: #61afef;
     --theme-magenta: #c678dd;
     --theme-cyan: #56b6c2;
-    --theme-white: #dcdfe4;
+    --theme-white: #acacb4; // #dcdfe4; more darker than original
     --theme-fg: var(--theme-white);
     --theme-bg: var(--theme-black);
   }
