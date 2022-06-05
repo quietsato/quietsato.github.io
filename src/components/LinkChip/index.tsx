@@ -27,11 +27,6 @@ const Wrapper = styled.div`
   padding: 0 1em;
   border-radius: 1em;
   border: 0.1em solid var(--theme-fg);
-
-  :hover {
-    color: var(--theme-blue);
-    border-color: var(--theme-blue);
-  }
 `;
 
 const LinkIcon = styled.div`
