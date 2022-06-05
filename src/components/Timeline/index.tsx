@@ -14,8 +14,12 @@ export type Props = {
 // Styles
 ////////////////////////////////////////////////////////////////////////////////
 const List = styled.ul`
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(max-content, 32em);
+  grid-auto-rows: auto;
+  grid-auto-flow: row;
+  justify-content: center;
   gap: 1em;
   list-style: none;
   margin: 0;
