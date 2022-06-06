@@ -48,8 +48,8 @@ const Text = styled.span``;
 const IconChips: React.FC<Props> = (props) => {
   return (
     <List>
-      {props.iconChipItems.map((item) => (
-        <ListItem>
+      {props.iconChipItems.map((item, i) => (
+        <ListItem key={i}>
           <Card>
             <Wrapper>
               <Icon>{item.icon}</Icon>
