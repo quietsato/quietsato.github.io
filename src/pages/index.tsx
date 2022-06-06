@@ -1,13 +1,65 @@
 import React from "react";
 import styled from "styled-components";
 
+import content from "../content";
+
 import "modern-css-reset/dist/reset.min.css";
+import Timeline from "../components/Timeline";
+import Section from "../components/Section";
+import GradationText from "../components/GradationText";
 import GlobalStyles from "../styles";
+import Avatar from "../components/Avatar";
+import SocialLinks from "../components/SocialLinks";
+import IconChips from "../components/IconChips";
 
-const Main = styled.main``;
+////////////////////////////////////////////////////////////////////////////////
+// Styles
+////////////////////////////////////////////////////////////////////////////////
+// Global
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const Content = styled.div`
+  margin: 2em 0;
+  width: 80%;
+  min-width: 300px;
+  max-width: 768px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+`;
 
+// Hero
+const Hero = styled.section`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+`;
 const H1 = styled.h1`
-  font-size: 1rem;
+  text-align: center;
+  font-size: 2.5em;
+`;
+const AvatarContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+const AvatarSizeLimiter = styled.div`
+  max-width: 24em;
+  width: 80%;
+`;
+const SocialLinksContainer = styled.div`
+  flex-grow: 1;
+`;
+
+// Footer
+const Footer = styled.footer`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const IndexPage: React.FC = () => {
@@ -15,13 +67,38 @@ const IndexPage: React.FC = () => {
     <>
       <GlobalStyles />
       <Main>
-        <title>Home Page</title>
-        <H1>Hello World</H1>
-        <img
-          alt="Gatsby G Logo"
-          src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-        />
+        <Content>
+          <title>I'm quietsato</title>
+          <Hero>
+            <H1>
+              I'm <GradationText>quietsato</GradationText>!
+            </H1>
+            <AvatarContainer>
+              <AvatarSizeLimiter>
+                <Avatar rainbow={{ lightness: 50, saturation: 50 }} />
+              </AvatarSizeLimiter>
+            </AvatarContainer>
+            <SocialLinksContainer>
+              <SocialLinks links={content.socialLinks} />
+            </SocialLinksContainer>
+          </Hero>
+          <Section title="I'm Using">
+            <IconChips iconChipItems={content.using} />
+          </Section>
+          <Section title="I'm Interested in">
+            <IconChips iconChipItems={content.interested} />
+          </Section>
+          <Section title="I like">
+            <IconChips iconChipItems={content.like} />
+          </Section>
+          <Section title="My Activities">
+            <Timeline timelineItems={content.activities} />
+          </Section>
+        </Content>
       </Main>
+      <Footer>
+        <Content>&copy; 2022 quietsato</Content>
+      </Footer>
     </>
   );
 };
