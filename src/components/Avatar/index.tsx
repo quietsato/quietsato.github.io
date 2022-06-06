@@ -28,6 +28,7 @@ const animationDuration = 10;
 
 // FillPath
 const AnimatedFillPathCss = css<PathProps>`
+  fill: var(--theme-fg);
   animation: rainbow-fill ${animationDuration}s linear;
   animation-iteration-count: infinite;
   @keyframes rainbow-fill {
@@ -55,6 +56,7 @@ const FillPath = styled.path<PathProps>`
 
 // StrokePath
 const AnimatedStrokePathCss = css<PathProps>`
+  stroke: var(--theme-fg);
   animation: rainbow-stroke ${animationDuration}s linear;
   animation-iteration-count: infinite;
   @keyframes rainbow-stroke {
