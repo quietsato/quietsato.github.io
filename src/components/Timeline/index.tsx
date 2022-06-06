@@ -16,7 +16,7 @@ export type Props = {
 const List = styled.ul`
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(max-content, 32em);
+  grid-template-columns: 1fr;
   grid-auto-rows: auto;
   grid-auto-flow: row;
   justify-content: center;
