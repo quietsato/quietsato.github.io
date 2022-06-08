@@ -88,7 +88,7 @@ const IndexPage: React.FC = () => {
           <Section title="I'm Interested in">
             <IconChips iconChipItems={content.interested} />
           </Section>
-          <Section title="I like">
+          <Section title="I Like">
             <IconChips iconChipItems={content.like} />
           </Section>
           <Section title="My Activities">
