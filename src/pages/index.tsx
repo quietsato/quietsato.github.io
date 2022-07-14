@@ -23,13 +23,19 @@ const Main = styled.main`
 `;
 const Content = styled.div`
   margin: 2em 0;
-  width: 80%;
-  min-width: 300px;
-  max-width: 768px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2em;
+  @media screen and (min-width: 20em) {
+    width: 20em;
+  }
+  @media screen and (min-width: 30em) {
+    width: 30em;
+  }
+  @media screen and (min-width: 40em) {
+    width: 40em;
+  }
 `;
 
 // Hero
@@ -88,7 +94,7 @@ const IndexPage: React.FC = () => {
           <Section title="I'm Interested in">
             <IconChips iconChipItems={content.interested} />
           </Section>
-          <Section title="I like">
+          <Section title="I Like">
             <IconChips iconChipItems={content.like} />
           </Section>
           <Section title="My Activities">
