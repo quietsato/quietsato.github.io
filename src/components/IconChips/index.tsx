@@ -19,7 +19,6 @@ const List = styled.ul`
   margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, 10em);
-  gap: 1em;
   justify-content: center;
   margin: 0 auto;
 `;
