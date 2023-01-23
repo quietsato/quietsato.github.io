@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import Link from "next/link";
 
 // markup
 const NotFoundPage = () => {
@@ -22,7 +22,7 @@ const NotFoundPage = () => {
           </>
         ) : null}
         <br />
-        <Link to="/">Go home</Link>.
+        <Link href="/">Go home</Link>.
       </p>
     </main>
   );

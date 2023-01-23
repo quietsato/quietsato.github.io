@@ -50,7 +50,7 @@ const TimelineCard: React.FC<Props> = (props) => {
       {props.links && (
         <LinkChipList>
           {props.links.map((link) => (
-            <LinkChipListItem>
+            <LinkChipListItem key={link.url}>
               <LinkChip text={link.text} url={link.url} />
             </LinkChipListItem>
           ))}

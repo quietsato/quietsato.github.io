@@ -4,6 +4,7 @@ import GradationText from "../GradationText";
 
 export type Props = {
   title?: string;
+  children: React.ReactNode;
 };
 
 const Root = styled.section`
