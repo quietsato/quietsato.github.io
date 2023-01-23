@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+export type Props = {
+  children: React.ReactNode;
+};
+
 const Span = styled.span`
   display: inline-block;
   background: linear-gradient(
@@ -20,7 +24,7 @@ const Span = styled.span`
   -webkit-text-fill-color: transparent;
 `;
 
-const GradationText: React.FC<{}> = (props) => {
+const GradationText: React.FC<Props> = (props) => {
   return <Span>{props.children}</Span>;
 };
 
