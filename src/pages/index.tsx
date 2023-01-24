@@ -7,10 +7,11 @@ import "modern-css-reset/dist/reset.min.css";
 import Timeline from "../components/Timeline";
 import Section from "../components/Section";
 import GradationText from "../components/GradationText";
-import GlobalStyles from "../styles";
 import Avatar from "../components/Avatar";
 import SocialLinks from "../components/SocialLinks";
 import IconChips from "../components/IconChips";
+import { NextPage } from "next";
+import Head from "next/head";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Styles
@@ -68,13 +69,14 @@ const Footer = styled.footer`
   align-items: center;
 `;
 
-const IndexPage: React.FC = () => {
+const IndexPage: NextPage = () => {
   return (
     <>
-      <GlobalStyles />
+      <Head>
+        <title>I'm quietsato</title>
+      </Head>
       <Main>
         <Content>
-          <title>I'm quietsato</title>
           <Hero>
             <H1>
               I'm <GradationText>quietsato</GradationText>!
