@@ -1,60 +1,91 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import Avatar from "../Avatar";
 
-const Container = styled.div<{
-  shrink: boolean;
-}>`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  justify-content: center;
-  gap: 2rem;
-  /* background-color: #fdf6e3; */
-
-  ${(props) =>
-    props.shrink &&
-    css`
-      flex-direction: row-reverse;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: auto;
-      animation: fade-in 0.3s ease-in-out;
-    `}
-  @keyframes fade-in {
+const fadeIn = keyframes`
     from {
       opacity: 0;
     }
     to {
       opacity: 1;
     }
-  }
+`;
+const fadeOut = keyframes`
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+`;
+
+const Container = styled.div<{
+  shrink: boolean;
+}>`
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  /* background-color: #fdf6e3; */
+
+  ${(props) =>
+    props.shrink &&
+    css`
+      /* flex-direction: row-reverse; */
+      /* align-items: center; */
+      /* justify-content: center; */
+      /* width: 100%; */
+      /* height: auto; */
+      /* animation: fade-in 0.3s ease-in-out; */
+    `}
 `;
 
 const AvatarContainer = styled.div<{
   shrink: boolean;
 }>`
-  width: 75%;
-  height: 75%;
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  left: 50%;
+  transform: translateX(-50%) translateY(4rem);
+
+  transition: all 0.3s ease-out;
 
   ${(props) =>
     props.shrink &&
     css`
-      width: 100%;
-      height: 100%;
+      width: 20vw;
+      height: 20vw;
+      transform: translateY(-4vw);
     `}
 `;
 
-const Text = styled.div`
+const Text = styled.div<{
+  shrink: boolean;
+}>`
   display: flex;
-  gap: 1vw;
-  font-size: max(4rem, 4vw);
   flex-direction: row;
+  gap: 1vw;
+
+  font-size: max(4rem, 4vw);
+  height: 4vw;
   color: #839496;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  transition: transform 0.3s ease-out;
+  animation: ${fadeOut} 0.1s both, ${fadeIn} 0.5s both;
+  animation-delay: 0ms, 0.3s;
+
+  ${(props) =>
+    props.shrink &&
+    css`
+      transform: translateX(25vw);
+      animation: ${fadeOut} 0.1s both, ${fadeIn} 0.5s both;
+      animation-delay: 0ms, 0.3s;
+    `}
 `;
 
 const AnimatedCharacters = styled.span`
@@ -97,7 +128,7 @@ const Hero: React.FC<Props> = (props) => {
 
   return (
     <Container shrink={props.shrink}>
-      <Text>
+      <Text shrink={props.shrink}>
         <span>I'm</span>
         <AnimatedCharacters>
           {animatedCharacters.map(({ key, character, enterDelayMs }) => (
