@@ -1,12 +1,12 @@
 import "modern-css-reset";
-import GlobalStyle from "../src/styles";
+import GlobalStyle, { WithFonts } from "../src/styles";
 
 export const decorators = [
   (Story) => (
-    <>
+    <WithFonts>
       <GlobalStyle />
       <Story />
-    </>
+    </WithFonts>
   ),
 ];
 

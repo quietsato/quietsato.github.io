@@ -1,4 +1,16 @@
+import React from "react";
 import { createGlobalStyle } from "styled-components";
+
+import { Recursive } from "@next/font/google";
+
+const recursive = Recursive({
+  weight: "variable",
+  subsets: ["latin"],
+});
+
+export const WithFonts: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className={recursive.className}>{children}</div>
+);
 
 const GlobalStyles = createGlobalStyle`
 body {
