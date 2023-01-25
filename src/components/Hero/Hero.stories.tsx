@@ -1,22 +1,18 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 
-import Hero, { Props } from "./Hero";
+import Hero from "./Hero";
 
-export default {
+const meta: Meta = {
   component: Hero,
-  title: "pages/Home/Hero",
-} as ComponentMeta<typeof Hero>;
+  decorators: [(Story) => <Story />],
+};
+export default meta;
 
-const Template: ComponentStory<typeof Hero> = (args: Props) => (
-  <div
-    style={{
-      height: "100vh",
-    }}
-  >
-    <Hero {...args} />
-  </div>
-);
+type Story = StoryObj<typeof Hero>;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Default: Story = {
+  args: {
+    shrink: false,
+  },
+};

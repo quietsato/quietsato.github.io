@@ -1,32 +1,36 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 
-import Avatar, { Props } from ".";
+import Avatar from ".";
 
-export default {
+const meta: Meta<typeof Avatar> = {
   component: Avatar,
   title: "Avatar",
-} as ComponentMeta<typeof Avatar>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof Avatar> = (args: Props) => <Avatar {...args} />;
+type Story = StoryObj<typeof Avatar>;
 
-export const Default = Template.bind({});
-Default.args = {
-  color: "#DCDFE4",
-  backgroundColor: "#282C34",
+export const Default: Story = {
+  args: {
+    color: "#DCDFE4",
+    backgroundColor: "#282C34",
+  },
 };
 
-export const TransparentBg = Template.bind({});
-TransparentBg.args = {
-  color: "#282c34",
-  backgroundColor: "transparent",
+export const TransparentBg: Story = {
+  args: {
+    color: "#282c34",
+    backgroundColor: "transparent",
+  },
 };
 
-export const Rainbow = Template.bind({});
-Rainbow.args = {
-  backgroundColor: "transparent",
-  rainbow: {
-    saturation: 50,
-    lightness: 50,
+export const Rainbow: Story = {
+  args: {
+    rainbow: {
+      saturation: 50,
+      lightness: 50,
+    },
+    backgroundColor: "transparent",
   },
 };
