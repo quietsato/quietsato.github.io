@@ -2,6 +2,8 @@ import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import Avatar from "../Avatar";
 
+// TODO: Install `react-transition-group`
+
 const fadeIn = keyframes`
     from {
       opacity: 0;
@@ -19,25 +21,12 @@ const fadeOut = keyframes`
     }
 `;
 
-const Container = styled.div<{
-  shrink: boolean;
-}>`
+const Container = styled.div`
   width: 100%;
   height: 100%;
   display: block;
   position: relative;
   /* background-color: #fdf6e3; */
-
-  ${(props) =>
-    props.shrink &&
-    css`
-      /* flex-direction: row-reverse; */
-      /* align-items: center; */
-      /* justify-content: center; */
-      /* width: 100%; */
-      /* height: auto; */
-      /* animation: fade-in 0.3s ease-in-out; */
-    `}
 `;
 
 const AvatarContainer = styled.div<{
@@ -54,9 +43,10 @@ const AvatarContainer = styled.div<{
   ${(props) =>
     props.shrink &&
     css`
-      width: 20vw;
-      height: 20vw;
-      transform: translateY(-4vw);
+      left: 0;
+      width: 8vw;
+      height: 8vw;
+      transform: translateY(0);
     `}
 `;
 
@@ -65,24 +55,23 @@ const Text = styled.div<{
 }>`
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 1vw;
 
   font-size: max(4rem, 4vw);
-  height: 4vw;
+  height: 8vw;
   color: #839496;
 
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-
-  transition: transform 0.3s ease-out;
-  animation: ${fadeOut} 0.1s both, ${fadeIn} 0.5s both;
-  animation-delay: 0ms, 0.3s;
+  transition: all 0.3s ease-out;
 
   ${(props) =>
     props.shrink &&
     css`
-      transform: translateX(25vw);
+      left: 0;
+      transform: translateX(10vw);
       animation: ${fadeOut} 0.1s both, ${fadeIn} 0.5s both;
       animation-delay: 0ms, 0.3s;
     `}
