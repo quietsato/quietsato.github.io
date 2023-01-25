@@ -19,6 +19,7 @@
     "chromatic": "npx chromatic"
   },
   "dependencies": {
+    "@next/font": "^13.1.5",
     "babel-plugin-styled-components": "^2.0.7",
     "next": "^13.1.4",
     "react": "^18.2.0",
