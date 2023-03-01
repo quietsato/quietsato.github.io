@@ -2,8 +2,6 @@ import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import Avatar from "../Avatar";
 
-// TODO: Install `react-transition-group`
-
 const fadeIn = keyframes`
     from {
       opacity: 0;
