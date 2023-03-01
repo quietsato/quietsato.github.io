@@ -5,7 +5,7 @@ import Avatar from "../Avatar";
 
 const fadeIn = keyframes`
     from {
-      opacity: 0;
+      opacity: 0.2;
     }
     to {
       opacity: 1;
@@ -16,7 +16,7 @@ const fadeOut = keyframes`
       opacity: 1;
     }
     to {
-      opacity: 0;
+      opacity: 0.2;
     }
 `;
 
@@ -49,7 +49,6 @@ const AvatarContainer = styled.div<{
           top: -0.5rem;
           width: 5rem;
           height: 5rem;
-          transform: translateX(-1rem), translateY(-1rem);
         `
       : css`
           transform: translateX(-50%) translateY(4rem);
@@ -64,10 +63,10 @@ const Text = styled.div<{
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1vw;
+  gap: 1rem;
 
   font-size: max(4rem, 4vw);
-  height: 8vw;
+  height: 4rem;
   color: #839496;
 
   left: 50%;
@@ -76,13 +75,13 @@ const Text = styled.div<{
   ${(props) =>
     props.enableTransition &&
     css`
-      transition: all 0.3s ease-out;
+      transition: all 0.3s ease;
     `}
 
   ${(props) =>
     props.shrink &&
     css`
-      animation: ${fadeOut} 0.1s both, ${fadeIn} 0.2s both;
+      animation: ${fadeOut} 0.2s both, ${fadeIn} 0.2s both;
       animation-delay: 0s, 0.2s;
       left: 5rem;
       transform: none;
