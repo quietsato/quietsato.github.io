@@ -1,16 +1,23 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 
-import { Recursive } from "@next/font/google";
+import { Recursive, Zen_Kaku_Gothic_New } from "@next/font/google";
 
 const recursive = Recursive({
   weight: "variable",
   subsets: ["latin"],
+  display: "block",
 });
 
-export const WithFonts: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className={recursive.className}>{children}</div>
-);
+const zenKakuGothicNew = Zen_Kaku_Gothic_New({
+  weight: "400",
+  subsets: ["cyrillic"],
+  display: "block",
+});
+
+export const WithFonts: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <div className={[recursive.className, zenKakuGothicNew].join(" ")}>{children}</div>;
+};
 
 const GlobalStyles = createGlobalStyle`
 body {

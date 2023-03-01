@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled, { css, keyframes } from "styled-components";
+import { Transition, TransitionStatus } from "react-transition-group";
 import Avatar from "../Avatar";
 
 const fadeIn = keyframes`
@@ -24,33 +25,42 @@ const Container = styled.div`
   height: 100%;
   display: block;
   position: relative;
-  /* background-color: #fdf6e3; */
 `;
 
 const AvatarContainer = styled.div<{
-  shrink: boolean;
+  enableTransition?: boolean;
+  shrink?: boolean;
 }>`
   position: absolute;
   width: 50vw;
   height: 50vw;
   left: 50%;
-  transform: translateX(-50%) translateY(4rem);
-
-  transition: all 0.3s ease-out;
 
   ${(props) =>
-    props.shrink &&
+    props.enableTransition &&
     css`
-      left: 0;
-      width: 8vw;
-      height: 8vw;
-      transform: translateY(0);
+      transition: all 0.3s ease-out;
     `}
+
+  ${(props) =>
+    props.shrink
+      ? css`
+          left: -0.5rem;
+          top: -0.5rem;
+          width: 5rem;
+          height: 5rem;
+          transform: translateX(-1rem), translateY(-1rem);
+        `
+      : css`
+          transform: translateX(-50%) translateY(4rem);
+        `}
 `;
 
 const Text = styled.div<{
-  shrink: boolean;
+  enableTransition?: boolean;
+  shrink?: boolean;
 }>`
+  position: absolute;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -60,18 +70,22 @@ const Text = styled.div<{
   height: 8vw;
   color: #839496;
 
-  position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  transition: all 0.3s ease-out;
+
+  ${(props) =>
+    props.enableTransition &&
+    css`
+      transition: all 0.3s ease-out;
+    `}
 
   ${(props) =>
     props.shrink &&
     css`
-      left: 0;
-      transform: translateX(10vw);
-      animation: ${fadeOut} 0.1s both, ${fadeIn} 0.5s both;
-      animation-delay: 0ms, 0.3s;
+      animation: ${fadeOut} 0.1s both, ${fadeIn} 0.2s both;
+      animation-delay: 0s, 0.2s;
+      left: 5rem;
+      transform: none;
     `}
 `;
 
@@ -103,7 +117,7 @@ const AnimatedCharacter = styled.span<AnimatedCharacterProps>`
 `;
 
 export type Props = {
-  shrink: boolean;
+  shrink?: boolean;
 };
 
 const Hero: React.FC<Props> = (props) => {
@@ -113,22 +127,31 @@ const Hero: React.FC<Props> = (props) => {
     enterDelayMs: i * 50,
   }));
 
+  function enableTransition(status: TransitionStatus): boolean {
+    return ["entering", "exiting"].findIndex((s) => s == status) !== undefined;
+  }
+
+  const shrinkTransitionRef = useRef(null);
   return (
-    <Container shrink={props.shrink}>
-      <Text shrink={props.shrink}>
-        <span>I'm</span>
-        <AnimatedCharacters>
-          {animatedCharacters.map(({ key, character, enterDelayMs }) => (
-            <AnimatedCharacter key={key} delayMs={enterDelayMs}>
-              {character}
-            </AnimatedCharacter>
-          ))}
-        </AnimatedCharacters>
-      </Text>
-      <AvatarContainer shrink={props.shrink}>
-        <Avatar rainbow={{ lightness: 50, saturation: 50 }} />
-      </AvatarContainer>
-    </Container>
+    <Transition nodeRef={shrinkTransitionRef} in={!!props.shrink} timeout={1000}>
+      {(shrinkStatus) => (
+        <Container ref={shrinkTransitionRef}>
+          <Text enableTransition={enableTransition(shrinkStatus)} shrink={props.shrink}>
+            <span>I'm</span>
+            <AnimatedCharacters>
+              {animatedCharacters.map(({ key, character, enterDelayMs }) => (
+                <AnimatedCharacter key={key} delayMs={enterDelayMs}>
+                  {character}
+                </AnimatedCharacter>
+              ))}
+            </AnimatedCharacters>
+          </Text>
+          <AvatarContainer enableTransition={enableTransition(shrinkStatus)} shrink={props.shrink}>
+            <Avatar rainbow={{ lightness: 50, saturation: 50 }} />
+          </AvatarContainer>
+        </Container>
+      )}
+    </Transition>
   );
 };
 
