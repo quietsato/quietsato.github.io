@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import GradationText from "../GradationText";
 
 export type Props = {
   title?: string;
@@ -18,6 +17,7 @@ const Title = styled.h2`
   font-size: 2em;
   text-align: center;
   display: inline-block;
+  font-variation-settings: "CASL" 1;
 `;
 const ContentWrapper = styled.div`
   width: 100%;
@@ -28,10 +28,12 @@ const Section: React.FC<Props> = (props) => {
     <Root>
       {props.title && (
         <Title>
-          <GradationText>{props.title}</GradationText>
+          {props.title}
         </Title>
       )}
-      <ContentWrapper>{props.children}</ContentWrapper>
+      <ContentWrapper>
+        {props.children}
+      </ContentWrapper>
     </Root>
   );
 };

@@ -6,12 +6,11 @@ import content from "../content";
 import "modern-css-reset/dist/reset.min.css";
 import Timeline from "../components/Timeline";
 import Section from "../components/Section";
-import GradationText from "../components/GradationText";
-import Avatar from "../components/Avatar";
 import SocialLinks from "../components/SocialLinks";
 import IconChips from "../components/IconChips";
 import { NextPage } from "next";
 import Head from "next/head";
+import Hero from "../components/Hero/Hero";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Styles
@@ -23,40 +22,28 @@ const Main = styled.main`
   align-items: center;
 `;
 const Content = styled.div`
-  margin: 2em 0;
+  margin: 2rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
-  @media screen and (min-width: 20em) {
-    width: 20em;
+  gap: 2rem;
+  @media screen and (min-width: 20rem) {
+    width: 20rem;
   }
-  @media screen and (min-width: 30em) {
-    width: 30em;
+  @media screen and (min-width: 30rem) {
+    width: 30rem;
   }
-  @media screen and (min-width: 40em) {
-    width: 40em;
+  @media screen and (min-width: 40rem) {
+    width: 40rem;
   }
 `;
 
 // Hero
-const Hero = styled.section`
+const LayoutHero = styled.section`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-`;
-const H1 = styled.h1`
-  text-align: center;
-  font-size: 2.5em;
-`;
-const AvatarContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const AvatarSizeLimiter = styled.div`
-  max-width: 24em;
-  width: 80%;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 `;
 const SocialLinksContainer = styled.div`
   flex-grow: 1;
@@ -76,20 +63,13 @@ const IndexPage: NextPage = () => {
         <title>I'm quietsato</title>
       </Head>
       <Main>
+        <LayoutHero>
+          <Hero shrink />
+        </LayoutHero>
         <Content>
-          <Hero>
-            <H1>
-              I'm <GradationText>quietsato</GradationText>!
-            </H1>
-            <AvatarContainer>
-              <AvatarSizeLimiter>
-                <Avatar rainbow={{ lightness: 50, saturation: 50 }} />
-              </AvatarSizeLimiter>
-            </AvatarContainer>
-            <SocialLinksContainer>
-              <SocialLinks links={content.socialLinks} />
-            </SocialLinksContainer>
-          </Hero>
+          <SocialLinksContainer>
+            <SocialLinks links={content.socialLinks} />
+          </SocialLinksContainer>
           <Section title="I'm Using">
             <IconChips iconChipItems={content.using} />
           </Section>

@@ -5,7 +5,7 @@ import Avatar from "../Avatar";
 
 const fadeIn = keyframes`
     from {
-      opacity: 0.2;
+      opacity: 0;
     }
     to {
       opacity: 1;
@@ -16,81 +16,89 @@ const fadeOut = keyframes`
       opacity: 1;
     }
     to {
-      opacity: 0.2;
+      opacity: 0;
     }
 `;
 
-const Container = styled.div`
+const Container = styled.div<{
+  shrink?: boolean;
+}>`
   width: 100%;
   height: 100%;
-  display: block;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--theme-bg);
+
+  ${props => props.shrink && css`
+  /* display: block; */
+  /* position: relative; */
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 1rem;
+  height: 6rem;
+  `}
 `;
 
 const AvatarContainer = styled.div<{
   enableTransition?: boolean;
   shrink?: boolean;
 }>`
-  position: absolute;
-  width: 50vw;
-  height: 50vw;
-  left: 50%;
+  width: min(60%, 36rem);
+  margin: auto;
 
   ${(props) =>
     props.enableTransition &&
     css`
-      transition: all 0.3s ease-out;
+      transition: transform 0.3s ease-out;
     `}
 
   ${(props) =>
     props.shrink
-      ? css`
-          left: -0.5rem;
-          top: -0.5rem;
+    && css`
+          margin: .5rem 0 0;
+          transform: scale(0.5) scale(calc(2));
+          transition-delay: 0s, 0.3s;
           width: 5rem;
           height: 5rem;
         `
-      : css`
-          transform: translateX(-50%) translateY(4rem);
-        `}
+  }
 `;
 
 const Text = styled.div<{
   enableTransition?: boolean;
   shrink?: boolean;
 }>`
-  position: absolute;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: center;
   gap: 1rem;
 
-  font-size: max(4rem, 4vw);
+  font-size: min(4rem, 10vw);
   height: 4rem;
-  color: #839496;
+  color: var(--theme-fg);
 
-  left: 50%;
-  transform: translateX(-50%);
 
   ${(props) =>
     props.enableTransition &&
     css`
-      transition: all 0.3s ease;
+      /* transition: transform 0.3s ease; */
     `}
+  
+  ${(props) => props.shrink ? css`
+  animation: ${fadeOut} 0.3s, ${fadeIn} 0.2s;
+  animation-delay: 0s, 0.3s;
+  ` : css`
+  animation: ${fadeOut} 0.2s, ${fadeIn} 0.3s;
+  animation-delay: 0s, 0.2s;
+  `}
 
-  ${(props) =>
-    props.shrink &&
-    css`
-      animation: ${fadeOut} 0.2s both, ${fadeIn} 0.2s both;
-      animation-delay: 0s, 0.2s;
-      left: 5rem;
-      transform: none;
-    `}
 `;
 
 const AnimatedCharacters = styled.span`
   display: flex;
   flex-direction: row;
+  gap: .1rem;
 `;
 type AnimatedCharacterProps = {
   delayMs: number;
@@ -134,7 +142,7 @@ const Hero: React.FC<Props> = (props) => {
   return (
     <Transition nodeRef={shrinkTransitionRef} in={!!props.shrink} timeout={1000}>
       {(shrinkStatus) => (
-        <Container ref={shrinkTransitionRef}>
+        <Container ref={shrinkTransitionRef} shrink={props.shrink}>
           <Text enableTransition={enableTransition(shrinkStatus)} shrink={props.shrink}>
             <span>I'm</span>
             <AnimatedCharacters>
