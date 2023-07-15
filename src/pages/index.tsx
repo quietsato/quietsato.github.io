@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import content from "../content";
 
-import "modern-css-reset/dist/reset.min.css";
+import "modern-css-reset";
 import Timeline from "../components/Timeline";
 import Section from "../components/Section";
 import GradationText from "../components/GradationText";
@@ -68,7 +68,7 @@ const Footer = styled.footer`
   align-items: center;
 `;
 
-const IndexPage: React.FC = () => {
+export default function MainPage(){
   return (
     <>
       <GlobalStyles />
@@ -108,5 +108,3 @@ const IndexPage: React.FC = () => {
     </>
   );
 };
-
-export default IndexPage;
