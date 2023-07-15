@@ -15,8 +15,8 @@ const Span = styled.span`
   background: linear-gradient(
     to right,
     var(--theme-yellow) 20%,
-    var(--theme-red) 40%,
-    var(--theme-cyan) 60%,
+    var(--theme-green) 40%,
+    var(--theme-green) 60%,
     var(--theme-yellow) 80%
   );
   background-clip: text;
