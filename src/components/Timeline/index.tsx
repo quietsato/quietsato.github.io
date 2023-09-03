@@ -6,7 +6,7 @@ import TimelineCard from "./TimelineCard";
 ////////////////////////////////////////////////////////////////////////////////
 // Types
 ////////////////////////////////////////////////////////////////////////////////
-export type Props = {
+type Props = {
   timelineItems: TimelineItem[];
 };
 
@@ -30,7 +30,7 @@ const ListItem = styled.li``;
 ////////////////////////////////////////////////////////////////////////////////
 // Export
 ////////////////////////////////////////////////////////////////////////////////
-const Timeline: React.FC<Props> = (props) => {
+export default function Timeline(props: Props) {
   return (
     <List>
       {props.timelineItems.map((item, i) => (
@@ -42,6 +42,4 @@ const Timeline: React.FC<Props> = (props) => {
       ))}
     </List>
   );
-};
-
-export default Timeline;
+}

@@ -1,17 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-import content from "../content";
+import content from "@/content";
 
-import "modern-css-reset/dist/reset.min.css";
-import Timeline from "../components/Timeline";
-import Section from "../components/Section";
-import GradationText from "../components/GradationText";
-import Avatar from "../components/Avatar";
-import SocialLinks from "../components/SocialLinks";
-import IconChips from "../components/IconChips";
-import { NextPage } from "next";
-import Head from "next/head";
+import "modern-css-reset";
+import Timeline from "@/components/Timeline";
+import Section from "@/components/Section";
+import GradationText from "@/components/GradationText";
+import GlobalStyles from "@/styles";
+import Avatar from "@/components/Avatar";
+import SocialLinks from "@/components/SocialLinks";
+import IconChips from "@/components/IconChips";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Styles
@@ -28,15 +27,8 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2em;
-  @media screen and (min-width: 20em) {
-    width: 20em;
-  }
-  @media screen and (min-width: 30em) {
-    width: 30em;
-  }
-  @media screen and (min-width: 40em) {
-    width: 40em;
-  }
+  width: 80%;
+  max-width: 40em;
 `;
 
 // Hero
@@ -69,14 +61,13 @@ const Footer = styled.footer`
   align-items: center;
 `;
 
-const IndexPage: NextPage = () => {
+export default function MainPage() {
   return (
     <>
-      <Head>
-        <title>I'm quietsato</title>
-      </Head>
+      <GlobalStyles />
       <Main>
         <Content>
+          <title>I'm quietsato</title>
           <Hero>
             <H1>
               I'm <GradationText>quietsato</GradationText>!
@@ -109,6 +100,4 @@ const IndexPage: NextPage = () => {
       </Footer>
     </>
   );
-};
-
-export default IndexPage;
+}
