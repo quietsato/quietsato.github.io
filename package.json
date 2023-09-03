@@ -9,7 +9,7 @@
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",
-    "deploy": "next build && next export && gh-pages -d public -b gh-pages",
+    "deploy": "next build && next export && gh-pages -d out -b gh-pages",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "formatcheck": "prettier --check ."
