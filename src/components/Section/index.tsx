@@ -1,8 +1,8 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 import GradationText from "../GradationText";
 
-export type Props = {
+type Props = {
   title?: string;
 };
 
@@ -22,7 +22,7 @@ const ContentWrapper = styled.div`
   width: 100%;
 `;
 
-const Section: React.FC<Props> = (props) => {
+export default function Section({ children, ...props }: PropsWithChildren<Props>) {
   return (
     <Root>
       {props.title && (
@@ -30,9 +30,7 @@ const Section: React.FC<Props> = (props) => {
           <GradationText>{props.title}</GradationText>
         </Title>
       )}
-      <ContentWrapper>{props.children}</ContentWrapper>
+      <ContentWrapper>{children}</ContentWrapper>
     </Root>
   );
-};
-
-export default Section;
+}

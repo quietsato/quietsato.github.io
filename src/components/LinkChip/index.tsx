@@ -6,7 +6,7 @@ import { VscLink } from "react-icons/vsc";
 ////////////////////////////////////////////////////////////////////////////////
 // Props
 ////////////////////////////////////////////////////////////////////////////////
-export type Props = {
+type Props = {
   text: string;
   url: string;
 };
@@ -41,7 +41,7 @@ const LinkText = styled.span``;
 ////////////////////////////////////////////////////////////////////////////////
 // Exported component
 ////////////////////////////////////////////////////////////////////////////////
-const LinkChip: React.FC<Props> = (props) => {
+export default function LinkChip(props: Props) {
   return (
     <Link href={props.url} target="_blank" rel="noreferrer noopener">
       <Wrapper>
@@ -52,6 +52,4 @@ const LinkChip: React.FC<Props> = (props) => {
       </Wrapper>
     </Link>
   );
-};
-
-export default LinkChip;
+}

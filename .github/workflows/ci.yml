@@ -1,10 +1,6 @@
 name: CI
 
-on:
-  push:
-    branches: [master, develop]
-  pull_request:
-    branches: [master, develop]
+on: [push]
 
 jobs:
   build:
@@ -13,19 +9,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Use Node.js 16
+      - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: "npm"
       - run: npm install
-      - run: npm run build
+      - run: npm run export
       - run: npm run typecheck
       - run: npm run formatcheck
-      - name: Chromatic Deployment
-        uses: chromaui/action@v1
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}

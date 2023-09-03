@@ -6,7 +6,7 @@ import Card from "../Card";
 ////////////////////////////////////////////////////////////////////////////////
 // Props
 ////////////////////////////////////////////////////////////////////////////////
-export type Props = {
+type Props = {
   iconChipItems: IconChipItem[];
 };
 
@@ -44,7 +44,7 @@ const Text = styled.span``;
 ////////////////////////////////////////////////////////////////////////////////
 // Exported component
 ////////////////////////////////////////////////////////////////////////////////
-const IconChips: React.FC<Props> = (props) => {
+export default function IconChips(props: Props) {
   return (
     <List>
       {props.iconChipItems.map((item, i) => (
@@ -59,6 +59,4 @@ const IconChips: React.FC<Props> = (props) => {
       ))}
     </List>
   );
-};
-
-export default IconChips;
+}

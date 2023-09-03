@@ -7,7 +7,7 @@ import LinkChip from "../LinkChip";
 ////////////////////////////////////////////////////////////////////////////////
 // Types
 ////////////////////////////////////////////////////////////////////////////////
-export type Props = TimelineItem;
+type Props = TimelineItem;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Private functions
@@ -41,7 +41,7 @@ const LinkChipListItem = styled.li``;
 ////////////////////////////////////////////////////////////////////////////////
 // Export
 ////////////////////////////////////////////////////////////////////////////////
-const TimelineCard: React.FC<Props> = (props) => {
+export default function TimelineCard(props: Props) {
   return (
     <Card>
       <YearMonth>{genYearMonthString(props.year, props.month)}</YearMonth>
@@ -50,7 +50,7 @@ const TimelineCard: React.FC<Props> = (props) => {
       {props.links && (
         <LinkChipList>
           {props.links.map((link) => (
-            <LinkChipListItem>
+            <LinkChipListItem key={`${link.text}-${link.url}`}>
               <LinkChip text={link.text} url={link.url} />
             </LinkChipListItem>
           ))}
@@ -58,6 +58,4 @@ const TimelineCard: React.FC<Props> = (props) => {
       )}
     </Card>
   );
-};
-
-export default TimelineCard;
+}

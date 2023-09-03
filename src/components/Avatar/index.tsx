@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 ////////////////////////////////////////////////////////////////////////////////
 // Types
 ////////////////////////////////////////////////////////////////////////////////
-export type Props = {
+type Props = {
   color?: string;
   backgroundColor?: string;
   rainbow?: Rainbow;
@@ -34,16 +34,15 @@ const AnimatedFillPathCss = css<PathProps>`
   @keyframes rainbow-fill {
     ${(props) =>
       [...new Array(11)].map(
-        (_, i) =>
-          css`
-            ${10 * i}% {
-              fill: hsl(
-                ${36 * i},
-                ${props.rainbow?.saturation || 100}%,
-                ${props.rainbow?.lightness || 100}%
-              );
-            }
-          `
+        (_, i) => css`
+          ${10 * i}% {
+            fill: hsl(
+              ${36 * i},
+              ${props.rainbow?.saturation || 100}%,
+              ${props.rainbow?.lightness || 100}%
+            );
+          }
+        `
       )}
   }
 `;
@@ -62,16 +61,15 @@ const AnimatedStrokePathCss = css<PathProps>`
   @keyframes rainbow-stroke {
     ${(props) =>
       [...new Array(11)].map(
-        (_, i) =>
-          css`
-            ${10 * i}% {
-              stroke: hsl(
-                ${36 * i},
-                ${props.rainbow?.saturation || 100}%,
-                ${props.rainbow?.lightness || 100}%
-              );
-            }
-          `
+        (_, i) => css`
+          ${10 * i}% {
+            stroke: hsl(
+              ${36 * i},
+              ${props.rainbow?.saturation || 100}%,
+              ${props.rainbow?.lightness || 100}%
+            );
+          }
+        `
       )}
   }
 `;
@@ -87,7 +85,7 @@ const StrokePath = styled.path<PathProps>`
 ////////////////////////////////////////////////////////////////////////////////
 // Exported component
 ////////////////////////////////////////////////////////////////////////////////
-const Avatar: React.FC<Props> = (props) => {
+export default function Avatar(props: Props) {
   const backgroundColor = props.backgroundColor || "transparent";
 
   return (
@@ -115,6 +113,4 @@ const Avatar: React.FC<Props> = (props) => {
       />
     </svg>
   );
-};
-
-export default Avatar;
+}
